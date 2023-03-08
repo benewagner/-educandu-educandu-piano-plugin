@@ -15,10 +15,10 @@
   ],
   "license": "MIT",
   "author": "Educandu Team <team@educandu.dev>",
-  "homepage": "https://github.com/educandu/educandu-plugin-example",
+  "homepage": "https://github.com/benewagner/educandu-piano-plugin",
   "repository": {
     "type": "git",
-    "url": "https://github.com/educandu/educandu-plugin-example"
+    "url": "https://github.com/benewagner/educandu-piano-plugin"
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
