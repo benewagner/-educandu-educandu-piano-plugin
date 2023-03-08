@@ -20,9 +20,6 @@
     "type": "git",
     "url": "https://github.com/benewagner/-educandu-educandu-piano-plugin"
   },
-  "publishConfig": {
-    "registry": "https://github.com/benewagner/-educandu-educandu-piano-plugin"
-  },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
     "antd": "^5.1.6",
