@@ -1,0 +1,90 @@
+import React, { useContext } from 'react';
+import escapeStringRegexp from 'escape-string-regexp';
+import {
+  MEDIA_LIBRRY_STORAGE_PATH_PATTERN,
+  DOCUMENT_MEDIA_STORAGE_PATH_PATTERN,
+  ROOM_MEDIA_STORAGE_PATH_PATTERN,
+  CDN_URL_PREFIX
+} from './constants.js';
+
+export function isCdnPath(path = '') {
+  return MEDIA_LIBRRY_STORAGE_PATH_PATTERN.test(path)
+    || DOCUMENT_MEDIA_STORAGE_PATH_PATTERN.test(path)
+    || ROOM_MEDIA_STORAGE_PATH_PATTERN.test(path);
+}
+
+export function getCdnPath({ url = '', cdnRootUrl = '' } = { url: '', cdnRootUrl: '' }) {
+  return url
+    .replace(new RegExp(`^${escapeStringRegexp(cdnRootUrl)}/?`), '')
+    .replace(new RegExp(`^${escapeStringRegexp(CDN_URL_PREFIX)}/?`), '');
+}
+
+export function isCdnUrl({ url = '', cdnRootUrl = '' }) {
+  return (cdnRootUrl && url.startsWith(cdnRootUrl)) || url.startsWith(CDN_URL_PREFIX);
+}
+
+export function getAccessibleUrl({ url = '', cdnRootUrl = '' } = { url: '', cdnRootUrl: '' }) {
+  if (isCdnPath(url)) {
+    return `${cdnRootUrl}/${url}`;
+  }
+  if (isCdnUrl({ url, cdnRootUrl })) {
+    return `${cdnRootUrl}/${getCdnPath({ url, cdnRootUrl })}`;
+  }
+  return url;
+}
+
+const containerContext = React.createContext();
+
+export function useService(dependecy) {
+  const container = useContext(containerContext);
+  return container.get(dependecy);
+}
+
+function isObject(value) {
+  return Object.prototype.toString.call(value) === '[object Object]';
+}
+
+function isArray(value) {
+  return Array.isArray(value);
+}
+
+function isFunction(value) {
+  return typeof value === 'function';
+}
+
+function isDate(value) {
+  return value instanceof Date;
+}
+
+function isPrimitiveType(value) {
+  return ['undefined', 'string', 'number', 'bigint', 'boolean'].includes(typeof value);
+}
+
+export function cloneDeep(value) {
+  if (isPrimitiveType(value) || isFunction(value) || value === null) {
+    return value;
+  }
+
+  if (isDate(value)) {
+    return new Date(value.getTime());
+  }
+
+  if (isArray(value)) {
+    return value.map(item => cloneDeep(item));
+  }
+
+  if (isObject(value)) {
+    return Object.entries(value).reduce((clone, entry) => {
+      clone[entry[0]] = cloneDeep(entry[1]);
+      return clone;
+    }, {});
+  }
+
+  throw new Error(`Cannot clone value of type ${Object.prototype.toString.call(value)}`);
+}
+
+export function couldAccessUrlFromRoom(url, targetRoomId) {
+  const urlOrCdnPath = getCdnPath({ url });
+  const sourceRoomId = urlOrCdnPath.match(ROOM_MEDIA_STORAGE_PATH_PATTERN)?.[1];
+  return !sourceRoomId || sourceRoomId === targetRoomId;
+}
