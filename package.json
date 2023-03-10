@@ -1,6 +1,6 @@
 {
   "name": "@benewagner/educandu-plugin-piano",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A piano plugin for educandu",
   "type": "module",
   "exports": {
