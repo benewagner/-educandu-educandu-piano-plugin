@@ -35,7 +35,7 @@ const config = {
   emailSenderAddress: process.env.TEST_APP_EMAIL_SENDER_ADDRESS,
   adminEmailAddress: process.env.TEST_APP_ADMIN_EMAIL_ADDRESS,
   initialUser: JSON.parse(process.env.TEST_APP_INITIAL_USER),
-  plugins: ['markdown', 'image', 'educandu/educandu-plugin-piano'],
+  plugins: ['markdown', 'image', 'benewagner/educandu-plugin-piano'],
   exposeErrorDetails: true
 };
 

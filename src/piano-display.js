@@ -26,7 +26,7 @@ export default function PianoDisplay({ content }) {
   const playExerciseMode = useRef('successive');
   const [currentTestIndex, setCurrentTestIndex] = useState(0);
   const [canShowSolution, setCanShowSolution] = useState(false);
-  const { t } = useTranslation('educandu/educandu-plugin-piano');
+  const { t } = useTranslation('benewagner/educandu-plugin-piano');
   const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
   const [playExerciseStartIndex, setPlayExerciseStartIndex] = useState(0);
   const { sourceUrl, midiTrackTitle, colors, tests, sampleType } = content;

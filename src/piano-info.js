@@ -8,14 +8,14 @@ import PianoIcon from './icons/piano-icon.js';
 class PianoInfo {
   static dependencies = [GithubFlavoredMarkdown];
 
-  static typeName = 'educandu/educandu-plugin-piano';
+  static typeName = 'benewagner/educandu-plugin-piano';
 
   constructor(gfm) {
     this.gfm = gfm;
   }
 
   getDisplayName(t) {
-    return t('educandu/educandu-plugin-piano:name');
+    return t('benewagner/educandu-plugin-piano:name');
   }
 
   getIcon() {

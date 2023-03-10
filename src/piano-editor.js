@@ -23,7 +23,7 @@ export default function PianoEditor({ content, onContentChanged }) {
   const RadioButton = Radio.Button;
   const keyRangeSelection = useRef([]);
   const abcHasBeenInput = useRef(false);
-  const { t } = useTranslation('educandu/educandu-plugin-piano');
+  const { t } = useTranslation('benewagner/educandu-plugin-piano');
   const selectorPianoColors = { whiteKey: 'white', blackKey: 'black' };
   const [canRenderSelectorPiano, setCanRenderSelectorPiano] = useState(false);
 
