@@ -213,7 +213,7 @@ export default function PianoDisplay({ content }) {
       }
     }
 
-    // ___Note sequence mode only from here___
+    // ____Note sequence mode only from here____
 
     if (isAnswerComplete) {
       return;
