@@ -11,9 +11,15 @@ import AbcNotation from './educandu-code/abc-notation.js';
 import React, { useEffect, useRef, useState } from 'react';
 import CardSelector from './educandu-code/card-selector.js';
 import { sectionDisplayProps } from '@educandu/educandu/ui/default-prop-types.js';
-import { usePianoId, useToneJsSampler, useMidiDevice, useExercise } from './custom/hooks.js';
+import { useMidiData, usePianoId, useToneJsSampler, useMidiDevice, useExercise, useMidiPlayer } from './custom/hooks.js';
+
+import ClientConfig from '@educandu/educandu/src/bootstrap/client-config.js';
+import { getAccessibleUrl, useService } from './educandu-code/resources.js';
+import PauseIcon from './educandu-code/pause-icon.js';
 
 export default function PianoDisplay({ content }) {
+
+  const clientConfig = useService(ClientConfig);
 
   const keys = useRef(null);
   const activeNotes = useRef([]);
@@ -31,9 +37,13 @@ export default function PianoDisplay({ content }) {
   const [playExerciseStartIndex, setPlayExerciseStartIndex] = useState(0);
   const { sourceUrl, midiTrackTitle, colors, tests, sampleType } = content;
 
+  const src = getAccessibleUrl({ url: sourceUrl, cdnRootUrl: clientConfig.cdnRootUrl });
+
   // Custom hooks returning state/ref variables
+  const midiData = useMidiData(src); // state
   const pianoId = usePianoId('default'); // state
   const isMidiDeviceConnected = useMidiDevice(); // state
+  const [midiPlayer, midiPlayerHandler] = useMidiPlayer(midiData); // [ref, ref]
   const [sampler, hasSamplerLoaded] = useToneJsSampler(sampleType); // [ref, state]
   const exerciseData = useExercise(content, currentTestIndex, currentExerciseIndex); // state
 
@@ -263,6 +273,52 @@ export default function PianoDisplay({ content }) {
     }
   };
 
+  function handleMidiPlayerEvent(message) {
+    if (!['Note on', 'Note off'].includes(message.name)) {
+      return;
+    }
+    const midiValue = message.noteNumber;
+    const velocity = message.velocity;
+    const noteName = message.noteName;
+    let eventType;
+    if (message.name === 'Note on') {
+      eventType = velocity <= 0 ? C.EVENT_TYPES.noteOff : C.EVENT_TYPES.noteOn;
+    }
+    if (message.name === 'Note off') {
+      eventType = C.EVENT_TYPES.noteOff;
+    }
+
+    playOrStopNote(eventType, noteName);
+    updateKeyStyle(eventType, midiValue);
+    updateActiveNotes(eventType, midiValue);
+  }
+
+  const startMidiPlayer = () => {
+    if (!midiPlayer.current.isPlaying()) {
+      midiPlayer.current.play();
+    }
+  };
+
+  const pauseMidiPlayer = () => {
+    if (!midiPlayer.current) {
+      return;
+    }
+    if (!midiPlayer.current.isPlaying()) {
+      return;
+    }
+    midiPlayer.current.pause();
+    sampler.current.releaseAll();
+  };
+
+  const stopMidiPlayer = () => {
+    if (midiPlayer.current) {
+      midiPlayer.current.stop();
+    }
+    sampler.current.releaseAll();
+    resetAllKeyStyles();
+    updateActiveNotes('Reset');
+  };
+
   // Stored in browser document object to be called from sibling pianos
   // Disable MIDI device input when sibling piano midi input switch is set active
   const disableMidiInput = id => {
@@ -324,6 +380,14 @@ export default function PianoDisplay({ content }) {
       resetEarTrainingControls({ changeTest: true });
     }
   };
+
+  const renderMidiPlayerControls = () => (
+    <div className="Piano-midiPlayerControls" >
+      <Button onClick={startMidiPlayer} icon={<PlayIcon />} />
+      <Button onClick={pauseMidiPlayer} icon={<PauseIcon />} />
+      <Button onClick={stopMidiPlayer} icon={<StopIcon />} />
+    </div>
+  );
 
   const renderMidiInputSwitch = () => (
     <div className="Piano-midiInputSwitchContainer">
@@ -400,6 +464,25 @@ export default function PianoDisplay({ content }) {
       updateMidiMessageHandlers();
     }
     manageSiblingPianosMidiInput();
+  });
+
+  // Set event handlers for midiPlayer
+  useEffect(() => {
+    midiPlayerHandler.current.updateActiveNotes = updateActiveNotes;
+    midiPlayerHandler.current.handleMidiPlayerEvent = handleMidiPlayerEvent;
+    midiPlayerHandler.current.resetAllKeyStyles = resetAllKeyStyles;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    return function cleanUp() {
+      if (midiPlayer.current && hasSamplerLoaded && sampler) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        midiPlayer.current.stop();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        sampler.current.releaseAll();
+      }
+    };
   });
 
   useEffect(() => {
@@ -483,7 +566,7 @@ export default function PianoDisplay({ content }) {
       <div className="Piano-controlsContainer">
         <div className="Piano-controlsWrapper">
           {!!sourceUrl && <h5 className="Piano-headlineMidi">MIDI</h5>}
-          {/* {!!sourceUrl && renderMidiPlayerControls()} */}
+          {!!sourceUrl && renderMidiPlayerControls()}
           {!!sourceUrl && !!midiTrackTitle && renderMidiTrackTitle()}
         </div>
         <div className="Piano-earTrainingControlsContainer">

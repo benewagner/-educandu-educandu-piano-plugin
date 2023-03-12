@@ -888,10 +888,10 @@
     yaml "^2.1.3"
     yargs "^17.6.2"
 
-"@educandu/educandu@>=0.104.0":
-  version "0.104.0"
-  resolved "https://registry.yarnpkg.com/@educandu/educandu/-/educandu-0.104.0.tgz#918b871a85614c405cdf3b81bb4c1dd82b569002"
-  integrity sha512-C9vL104428+suKgV6xkV1tLeZwk94U4m4G33WDPbN8pM+KrUnd9DZAO7Bte4VGPAp8W85P3wriZLVV2IAtV5yw==
+"@educandu/educandu@^0.108.0":
+  version "0.108.0"
+  resolved "https://registry.yarnpkg.com/@educandu/educandu/-/educandu-0.108.0.tgz#469a6326e30320fa171472fa322b6a7627c0602e"
+  integrity sha512-tKmJc5jpEnITYhdHXzD8+H443iU2+UXk5JouBqXqPRzeVSfCfxqsGdedgSegLIDkUy8I6ypM/XTIarxA/taoSA==
   dependencies:
     "@ant-design/icons" "^4.8.0"
     "@node-saml/passport-saml" "^4.0.2"
@@ -907,6 +907,7 @@
     classnames "^2.3.2"
     connect-mongo "^4.6.0"
     cookie-parser "^1.4.6"
+    croner "^6.0.0"
     cropperjs "^1.5.13"
     crypto-js "^4.1.1"
     debounce "^1.2.1"
@@ -2292,9 +2293,9 @@ available-typed-arrays@^1.0.5:
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
 aws-sdk@^2.1276.0:
-  version "2.1322.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1322.0.tgz#9535f5bd66320cd06f24e734bc0db4c60e7efaf2"
-  integrity sha512-y1gSjcxKjL7VT5B8TA2/0etuG/GhrMbPC20zrqpI82LCilRTHkQ8UiXFdWSgoEuqtn16ZK/EbqCNXlgcv90xow==
+  version "2.1333.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1333.0.tgz#02ecd59499e364584efb08196d6147873d6328a9"
+  integrity sha512-MvOuleNeRryJtkCGXGEWDHPqqgxuqdi4/hGzJEpn9tnjsW9LNK8UgFPpYzUZ24ZO/3S+jiUh8DMMrL5nVGnagg==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -3207,9 +3208,9 @@ copy-to-clipboard@^3.2.0:
     toggle-selection "^1.0.6"
 
 core-js@^3.26.1:
-  version "3.28.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.28.0.tgz#ed8b9e99c273879fdfff0edfc77ee709a5800e4a"
-  integrity sha512-GiZn9D4Z/rSYvTeg1ljAIsEqFm0LaN9gVtwDCrKL80zHtS31p9BAjmTxVqTQDMpwlMolJZOFntUG2uwyj7DAqw==
+  version "3.29.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.29.0.tgz#0273e142b67761058bcde5615c503c7406b572d6"
+  integrity sha512-VG23vuEisJNkGl6XQmFJd3rEG/so/CNatqeE+7uZAwTSwFeB/qaO0be8xZYUNWprJ/GIwL8aMt9cj1kvbpTZhg==
 
 core-util-is@1.0.2:
   version "1.0.2"
@@ -3259,6 +3260,11 @@ create-hmac@^1.1.0, create-hmac@^1.1.4, create-hmac@^1.1.7:
     ripemd160 "^2.0.0"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+croner@^6.0.0:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/croner/-/croner-6.0.2.tgz#a69ac8c4b8da23d98b7aa16fb024497c16569773"
+  integrity sha512-syamnA6hV0MrElMf8YP0LavyphswqNPS17MnuQeuVSay2drdkjfB/5srupeUSQNrNcc3eQAMtsHj0fpDVOc/Ng==
 
 cropperjs@^1.5.13:
   version "1.5.13"
@@ -5317,9 +5323,9 @@ i18next-icu@^2.1.0:
   integrity sha512-Z3EsOOItX4atEb2rbu1gq0mtRcQpzJ/muWEyRTKnqWz0qY0HrLfaJ2bo62f+rTF+LPbLXQ1vjHMIv4dSLPW1oQ==
 
 i18next@^22.4.5:
-  version "22.4.10"
-  resolved "https://registry.yarnpkg.com/i18next/-/i18next-22.4.10.tgz#cfbfc412c6bc83e3c16564f47e6a5c145255960e"
-  integrity sha512-3EqgGK6fAJRjnGgfkNSStl4mYLCjUoJID338yVyLMj5APT67HUtWoqSayZewiiC5elzMUB1VEUwcmSCoeQcNEA==
+  version "22.4.11"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-22.4.11.tgz#8b6c9be95176de90d3f10a78af125d95d3a3258d"
+  integrity sha512-ShfTzXVMjXdF2iPiT/wbizOrssLh9Ab6VpuVROihLCAu+u25KbZiEYVgsA0W6g0SgjPa/JmGWcUEV/g6cKzEjQ==
   dependencies:
     "@babel/runtime" "^7.20.6"
 
@@ -5363,9 +5369,9 @@ immediate@~3.0.5:
   integrity sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==
 
 immutable@^4.1.0:
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.2.4.tgz#83260d50889526b4b531a5e293709a77f7c55a2a"
-  integrity sha512-WDxL3Hheb1JkRN3sQkyujNlL/xRjAo3rJtaU5xeufUauG66JdMr32bLj4gF+vWl84DIA3Zxw7tiAjneYzRRw+w==
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.3.0.tgz#eb1738f14ffb39fd068b1dbe1296117484dd34be"
+  integrity sha512-0AOCmOip+xgJwEVTQj1EfiDDOkPmuyllDuTuEX+DDXUgapLAsBIfkg3sxCYyCEA8mQqZrrxPUGjcOQ2JS3WLkg==
 
 import-fresh@^3.0.0, import-fresh@^3.2.1:
   version "3.3.0"
@@ -7267,9 +7273,9 @@ pako@~1.0.2:
   integrity sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==
 
 papaparse@^5.3.2:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/papaparse/-/papaparse-5.3.2.tgz#d1abed498a0ee299f103130a6109720404fbd467"
-  integrity sha512-6dNZu0Ki+gyV0eBsFKJhYr+MdQYAzFUGlBMNj3GNrmHxmz1lfRa24CjFObPXtjcetlOv5Ad299MhIK0znp3afw==
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/papaparse/-/papaparse-5.4.0.tgz#a3e47c32f32466d30af67ce2fef7910b3c3d4d91"
+  integrity sha512-ZBQABWG09p+u8rFoJVl/GhgxZ5zy9Zh1Lu/LVc7VX5T4nljjC14/YTcpebYwqP218B9X307eBOP7Tuhoqv7v7w==
 
 parent-module@^1.0.0:
   version "1.0.1"
@@ -7520,9 +7526,9 @@ pinkie@^2.0.0:
   integrity sha512-MnUuEycAemtSaeFSjXKW/aroV7akBbY+Sv+RkyqFjgAe73F+MR0TBWKBRDkmfWq/HiFmdavfZ1G7h4SPZXaCSg==
 
 plyr@^3.7.3:
-  version "3.7.3"
-  resolved "https://registry.yarnpkg.com/plyr/-/plyr-3.7.3.tgz#31465bb45dc910babed5f05f4cf2667604898fa5"
-  integrity sha512-ORULENBvEvvzMYXRQBALDmEi8P+wZt1Hr/NvHqchu/t7E2xJKNkRYWx0qCA1HETIGZ6zobrOVgqeAUqWimS7fQ==
+  version "3.7.7"
+  resolved "https://registry.yarnpkg.com/plyr/-/plyr-3.7.7.tgz#f7d20ab9297645d1ad3f68c7c66db6c3d8eef9a8"
+  integrity sha512-8B2b0HP+j/jKM7GrYdEuSi1hIF3BnNzjaBsBa3bx4/SO9omX3EfhCi78ZFh/0QuCKlwpTBusTMMZ3Hq6bJ5d/g==
   dependencies:
     core-js "^3.26.1"
     custom-event-polyfill "^1.0.7"
@@ -8227,9 +8233,9 @@ react-compare-slider@^2.2.0:
   integrity sha512-I77xqulpoibZ9eqjn5wjpZL5IRpUZYcUlde70YaJ+MORGbUThrjTlHKl/UeGyCIPUWtPID5f5/zK9Q+1ovQLeA==
 
 react-cool-dimensions@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-cool-dimensions/-/react-cool-dimensions-3.0.0.tgz#6738fec7091e6c7a2dc8b3a959e7cfe69bcebc71"
-  integrity sha512-UVQC4vgwvYtHqo3vzG6j840p1QOSHrRbL0mZMRTQqz4XfB4qDmYW1V7OQmSVEQ8VY7kLLj4K2A15bRNM3nf+8A==
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-cool-dimensions/-/react-cool-dimensions-3.0.1.tgz#b419c0386957a08e75acf7a4e6578c77f29b0f78"
+  integrity sha512-DUsDB5WUN1Qh6fJJlBtqFKCktrZCPRYcVn8NTeM6hP/5AhZNjDOa2sC2Dg0EM3WUObPDNV5nFLA34vHQfahUeg==
 
 react-countdown@^2.3.5:
   version "2.3.5"
@@ -8264,16 +8270,16 @@ react-i18next@^12.1.1:
     html-parse-stringify "^3.0.1"
 
 react-infinite-scroll-hook@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/react-infinite-scroll-hook/-/react-infinite-scroll-hook-4.0.4.tgz#616e66ba1de6421f74cd37d652e5b8c26c886373"
-  integrity sha512-fCjG9xwCfnV9GcAHVz9rXGnLqO55fcYsbeshSxgEH2biF8fVFHmfzZrfX4iTzoOWO1Rrz5hxrK4bBcqL5fAy9Q==
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroll-hook/-/react-infinite-scroll-hook-4.1.1.tgz#25c0c2cb9a41039019bd723823e21db1404c137d"
+  integrity sha512-1bu2572rF3DtjFMhIOzoasLMdYW0vMWxROtl99M5FYGSxm84Ro4aNBZW6ivgE45ofus4Ymo7jIS0Be3zcuLk8g==
   dependencies:
-    react-intersection-observer-hook "^2.0.6"
+    react-intersection-observer-hook "^2.1.1"
 
-react-intersection-observer-hook@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/react-intersection-observer-hook/-/react-intersection-observer-hook-2.0.6.tgz#f7c416002c2ec8e763841849c666e650f010c034"
-  integrity sha512-NTx+4Qat1tS9Bn4CXa6YgmbxLGcxFttV94Us7ZUEZ4mIZD3XaCpnm6U/FU35c6cJOMIfc7UfSzpju69ckfmb+Q==
+react-intersection-observer-hook@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer-hook/-/react-intersection-observer-hook-2.1.1.tgz#6222a82624d2a507aa5ad187c99d2d530e746e4f"
+  integrity sha512-MeFGpYtcfHB9v6oGqQuHAbSwaWBpd7yZ4wMIeVtboWRdGusAF4V+/8QQ0OKZ36Ez19grYnoDVhRUCjtwI2ZVaw==
 
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"

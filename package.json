@@ -11,7 +11,8 @@
     "node": "^18.0.0"
   },
   "keywords": [
-    "educandu", "piano"
+    "educandu",
+    "piano"
   ],
   "license": "MIT",
   "author": "Educandu Team <team@educandu.dev>, Benedikt Wagner <benewagner-npm@gmx.de>",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.8.0",
+    "@educandu/educandu": "^0.108.0",
     "antd": "^5.1.6",
     "joi": "^17.7.0",
     "midi-player-js": "^2.0.16",
@@ -32,7 +34,6 @@
   },
   "devDependencies": {
     "@educandu/dev-tools": "^8.0.0",
-    "@educandu/educandu": ">=0.104.0",
     "@educandu/eslint-config": "^2.2.1",
     "@educandu/node-jsx-loader": "^3.0.4",
     "@educandu/rooms-auth-lambda": "^4.0.1",
@@ -47,9 +48,7 @@
     "parseboolean": "^1.0.0",
     "vitest": "^0.25.8"
   },
-  "peerDependencies": {
-    "@educandu/educandu": ">=0.104.0"
-  },
+  "peerDependencies": {},
   "resolutions": {
     "**/gl": "^6.0.2"
   }
