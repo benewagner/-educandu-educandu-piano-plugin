@@ -10,14 +10,12 @@ import { Button, Radio, InputNumber, Slider } from 'antd';
 import AbcNotation from './educandu-code/abc-notation.js';
 import React, { useEffect, useRef, useState } from 'react';
 import CardSelector from './educandu-code/card-selector.js';
+import ClientConfig from '@educandu/educandu/bootstrap/client-config.js';
+import { getAccessibleUrl } from '@educandu/educandu/utils/source-utils.js';
+import { useService } from '@educandu/educandu/components/container-context.js';
 import { sectionDisplayProps } from '@educandu/educandu/ui/default-prop-types.js';
 import { useMidiData, usePianoId, useToneJsSampler, useMidiDevice, useExercise, useMidiPlayer } from './custom/hooks.js';
 
-import ClientConfig from '@educandu/educandu/bootstrap/client-config.js';
-// import { getAccessibleUrl, useService } from './educandu-code/resources.js';
-// import { useService } from '@educandu/educandu/components/container-context.js';
-import { getAccessibleUrl } from '@educandu/educandu/utils/source-utils.js';
-import { useService } from '@educandu/educandu/components/container-context.js';
 import PauseIcon from './educandu-code/pause-icon.js';
 
 export default function PianoDisplay({ content }) {

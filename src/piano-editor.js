@@ -1,35 +1,32 @@
 /* eslint-disable max-lines */
 import * as ut from './custom/utils.js';
+import PianoInfo from './piano-info.js';
 import id from './educandu-code/unique-id.js';
 import { useTranslation } from 'react-i18next';
 import React, { useState, useRef } from 'react';
 import { pianoLayout } from './custom/piano.js';
 import { PlusOutlined } from '@ant-design/icons';
+import UrlInput from './educandu-code/url-input.js';
 import ItemPanel from './educandu-code/item-panel.js';
 import AbcEditorItem from './custom/abc-editor-item.js';
-// import { cloneDeep } from './educandu-code/resources.js';
+import { cloneDeep } from './educandu-code/resources.js';
 import { KeyWhite, KeyWhiteWithBlack } from './custom/keys.js';
-import { Form, Input, Radio, Button, Slider, Checkbox, Divider } from 'antd';
-// import { Form, Radio, Button, Slider, Checkbox, Divider } from 'antd';
 import { FORM_ITEM_LAYOUT } from '@educandu/educandu/domain/constants.js';
 import { swapItemsAt, removeItemAt } from './educandu-code/array-utils.js';
+import { Form, Input, Radio, Button, Slider, Checkbox, Divider } from 'antd';
+import { useService } from '@educandu/educandu/components/container-context.js';
 import { sectionEditorProps } from '@educandu/educandu/ui/default-prop-types.js';
 import { EXERCISE_TYPES, INTERVAL_NAMES, TRIADS, SEVENTH_CHORDS, INVERSIONS } from './custom/constants.js';
 
-import PianoInfo from './piano-info.js';
-import UrlInput from './educandu-code/url-input.js';
-import { cloneDeep, useService } from './educandu-code/resources.js';
-
 export default function PianoEditor({ content, onContentChanged }) {
 
-  const pianoInfo = useService(PianoInfo);
-  const { tests, sourceUrl, midiTrackTitle } = content;
-  // const { tests } = content;
   const FormItem = Form.Item;
   const RadioGroup = Radio.Group;
   const RadioButton = Radio.Button;
   const keyRangeSelection = useRef([]);
   const abcHasBeenInput = useRef(false);
+  const pianoInfo = useService(PianoInfo);
+  const { tests, sourceUrl, midiTrackTitle } = content;
   const { t } = useTranslation('benewagner/educandu-plugin-piano');
   const selectorPianoColors = { whiteKey: 'white', blackKey: 'black' };
   const [canRenderSelectorPiano, setCanRenderSelectorPiano] = useState(false);
@@ -86,93 +83,8 @@ export default function PianoEditor({ content, onContentChanged }) {
     changeContent({ tests: newTests });
   };
 
-  // function getDefaultCustomNoteSequence() {
-  //   return {
-  //     abc: 'C',
-  //     abcNoteNameSequence: ['C'],
-  //     clef: 'treble',
-  //     filteredAbc: 'C',
-  //     midiNoteNameSequence: ['C4'],
-  //     midiValueSequence: [60],
-  //     noteRange: { first: 19, last: 39 }
-  //   };
-  // }
-
-  // function getDefaultTest() {
-  //   const defaultIntervalCheckboxStates = {
-  //     all: false,
-  //     prime: false,
-  //     second: {
-  //       minor: true,
-  //       major: true
-  //     },
-  //     third: {
-  //       minor: true,
-  //       major: true
-  //     },
-  //     fourth: true,
-  //     tritone: false,
-  //     fifth: true,
-  //     sixth: {
-  //       minor: true,
-  //       major: true
-  //     },
-  //     seventh: {
-  //       minor: true,
-  //       major: true
-  //     },
-  //     octave: false
-  //   };
-
-  //   return {
-  //     exerciseType: '',
-  //     intervalNoteRange: { first: 12, last: 39 },
-  //     chordNoteRange: { first: 12, last: 39 },
-  //     noteSequenceNoteRange: { first: 19, last: 39 },
-  //     whiteKeysOnly: false,
-  //     numberOfNotes: 4,
-  //     clef: 'treble',
-  //     isCustomNoteSequence: false,
-  //     customNoteSequences: [getDefaultCustomNoteSequence()],
-  //     intervalAllowsLargeIntervals: false,
-  //     chordAllowsLargeIntervals: false,
-  //     noteSequenceAllowsLargeIntervals: false,
-  //     directionCheckboxStates: {
-  //       up: true,
-  //       down: false
-  //     },
-  //     triadCheckboxStates: {
-  //       majorTriad: true,
-  //       minorTriad: true,
-  //       diminished: false,
-  //       augmented: false
-  //     },
-  //     seventhChordCheckboxStates: {
-  //       majorTriadMinorSeventh: false,
-  //       majorTriadMajorSeventh: false,
-  //       minorTriadMinorSeventh: false,
-  //       minorTriadMajorSeventh: false,
-  //       halfDiminished: false,
-  //       diminishedSeventh: false
-  //     },
-  //     inversionCheckboxStates: {
-  //       fundamental: true,
-  //       firstInversion: false,
-  //       secondInversion: false,
-  //       thirdInversion: false
-  //     },
-  //     intervalCheckboxStates: {
-  //       ...defaultIntervalCheckboxStates
-  //     },
-  //     noteSequenceCheckboxStates: {
-  //       ...defaultIntervalCheckboxStates
-  //     }
-  //   };
-  // }
-
   const handleAddTestButtonClick = () => {
     const newTests = cloneDeep(tests);
-    // newTests.push(getDefaultTest());
     newTests.push(pianoInfo.getDefaultTest());
     changeContent({ tests: newTests });
   };
@@ -393,7 +305,6 @@ export default function PianoEditor({ content, onContentChanged }) {
 
   const handleAddCustomNoteSequenceButtonClick = index => {
     const newTests = cloneDeep(tests);
-    // newTests[index].customNoteSequences.push(getDefaultCustomNoteSequence());
     newTests[index].customNoteSequences.push(pianoInfo.getDefaultCustomNoteSequence());
     changeContent({ tests: newTests });
   };
