@@ -7,7 +7,7 @@ import { filterAbcString, getNumberOfAbcNotes } from './utils.js';
 import { FORM_ITEM_LAYOUT } from '@educandu/educandu/domain/constants.js';
 
 function CustomAbcNotation({ clef, initialAbc, abcRef }) {
-  const { t } = useTranslation('piano');
+  const { t } = useTranslation('benewagner/educandu-plugin-piano');
   const [abc, setAbc] = useState(initialAbc);
   abcRef.current = setAbc;
 
@@ -36,7 +36,7 @@ export default function AbcEditorItem(props) {
   const inputRef = useRef(null);
   const prevInputValueRef = useRef(abc);
 
-  const { t } = useTranslation('piano');
+  const { t } = useTranslation('benewagner/educandu-plugin-piano');
 
   const handleCurrentAbcCodeChanged = event => {
     const value = event.target.value;

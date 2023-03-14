@@ -13,8 +13,11 @@ import CardSelector from './educandu-code/card-selector.js';
 import { sectionDisplayProps } from '@educandu/educandu/ui/default-prop-types.js';
 import { useMidiData, usePianoId, useToneJsSampler, useMidiDevice, useExercise, useMidiPlayer } from './custom/hooks.js';
 
-import ClientConfig from '@educandu/educandu/src/bootstrap/client-config.js';
-import { getAccessibleUrl, useService } from './educandu-code/resources.js';
+import ClientConfig from '@educandu/educandu/bootstrap/client-config.js';
+// import { getAccessibleUrl, useService } from './educandu-code/resources.js';
+// import { useService } from '@educandu/educandu/components/container-context.js';
+import { getAccessibleUrl } from '@educandu/educandu/utils/source-utils.js';
+import { useService } from '@educandu/educandu/components/container-context.js';
 import PauseIcon from './educandu-code/pause-icon.js';
 
 export default function PianoDisplay({ content }) {
@@ -497,7 +500,7 @@ export default function PianoDisplay({ content }) {
     <React.Fragment>
       {testCards.length > 1 && (
         <div className="EarTrainingDisplay-controlPanel">
-          <div>
+          <div className="Piano-CardSelectorWrapper">
             <CardSelector
               cards={testCards}
               onCardSelected={handleTestCardSelected}
